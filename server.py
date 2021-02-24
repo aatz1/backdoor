@@ -30,6 +30,7 @@ def target_communication():
         command = input(f"(machine: {ip} >")
         reliable_send(command)
         if command == "quit":
+            print(termcolor.colored(f"(#) exiting {ip} machine (#)",  'yellow'))
             break
         result = reliable_rcv()
         print(result)
