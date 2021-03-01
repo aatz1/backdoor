@@ -39,14 +39,14 @@ try:
                 pass
 
             elif command == "help":
-                print('''
-                quit ~ quit section
-                upload *file name* ~ upload file to target machine
-                download *file name* ~ download file from target machine
-                keylogger -s ~ start keylogger
-                keylloger -p ~ print inputed keys
-                keylogger -stop ~ stop keylogger
-                persistence *RegName* *FileName* ~ create register in registry''')
+                print('''\n
+  quit ~ quit section
+  upload *file name* ~ upload file to target machine
+  download *file name* ~ download file from target machine
+  keylogger -s ~ start keylogger
+  keylloger -p ~ print inputed keys
+  keylogger -stop ~ stop keylogger
+  persistence *RegName* *FileName* ~ create register in registry \n\n''')
 
             elif command == "clear":
                 os.system("clear")
