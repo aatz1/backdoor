@@ -33,6 +33,9 @@ try:
             if command == "quit":
                 print(termcolor.colored(f"(#) exiting {ip} machine (#)",  'yellow'))
                 break
+            elif command[:3] == "cd ":
+                pass
+
             elif command == "help":
                 print('''
                 quit ~ quit section
