@@ -36,7 +36,6 @@ try:
             elif command == "help":
                 print('''
                 quit ~ quit section
-                clear ~ clear screen
                 upload *file name* ~ upload file to target machine
                 download *file name* ~ download file from target machine
                 keylogger -s ~ start keylogger
