@@ -1,2 +1,5 @@
-# backdoor
-backdoor uiuiuiui
+# Backdoor.py
+ 
+Simple python backdoor with basic functions
+
+### Funtions:
