@@ -62,10 +62,7 @@ try:
   upload *file name* ~ upload file to target machine
   download *file name* ~ download file from target machine
   screenshot ~ scrennshot of taget machines
-  keylogger -s ~ start keylogger
-  keylloger -p ~ print inputed keys
-  keylogger -stop ~ stop keylogger
-  persistence *RegName* *FileName* ~ create register in registry \n\n''')
+ \n\n''')
 
             elif command == "clear":
                 os.system("clear")
